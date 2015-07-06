@@ -1,6 +1,6 @@
 {
   "name": "floating",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Simple wrapper for basic arithmetic",
   "main": "src/floating.js",
   "scripts": {
