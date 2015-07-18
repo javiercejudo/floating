@@ -22,6 +22,11 @@ describe('Floating', function() {
     it('should have a div method', function() {
       new Floating(0.3).div(new Floating(0.2)).valueOf().should.be.exactly(0.3 / 0.2);
     });
+
+    it('should have a pow method', function() {
+      new Floating(2).pow(new Floating(5)).valueOf().should.be.exactly(32);
+      new Floating(81).pow(new Floating(0.5)).valueOf().should.be.exactly(9);
+    });
   });
 
   describe('toString, valueOf and JSON', function() {

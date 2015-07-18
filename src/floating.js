@@ -37,6 +37,10 @@ function factory() {
     return new Floating(this.val() / x.val());
   };
 
+  p.pow = function div(exponent) {
+    return new Floating(Math.pow(this.val(), exponent.val()));
+  };
+
   p.toString = function toString() {
     return this.val().toString();
   };
