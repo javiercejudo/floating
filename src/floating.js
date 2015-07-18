@@ -37,7 +37,7 @@ function factory() {
     return new Floating(this.val() / x.val());
   };
 
-  p.pow = function div(exponent) {
+  p.pow = function pow(exponent) {
     return new Floating(Math.pow(this.val(), exponent.val()));
   };
 
