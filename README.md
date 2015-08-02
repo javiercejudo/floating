@@ -6,7 +6,7 @@
 
 Simple wrapper for basic arithmetic—addition, subtraction, multiplication and division.
 
-Useful for plugging it into [linear-arbitrary-precision](https://github.com/javiercejudo/linear-arbitrary-precision)
+Useful for plugging it into [arbitrary-precision](https://github.com/javiercejudo/arbitrary-precision) or [linear-arbitrary-precision](https://github.com/javiercejudo/linear-arbitrary-precision)
 as a fallback to specialised arbitrary precision libraries.
 
 ## Install
