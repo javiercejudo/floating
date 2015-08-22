@@ -27,6 +27,13 @@ describe('Floating', function() {
       new Floating(2).pow(new Floating(5)).valueOf().should.be.exactly(32);
       new Floating(81).pow(new Floating(0.5)).valueOf().should.be.exactly(9);
     });
+
+    it('should have an equals method', function() {
+      new Floating(2).equals(new Floating(2)).should.be.exactly(true);
+      new Floating(2).equals(new Floating(3)).should.be.exactly(false);
+
+      new Floating(2).should.not.equal(new Floating(2));
+    });
   });
 
   describe('toString, valueOf and JSON', function() {

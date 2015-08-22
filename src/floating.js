@@ -41,6 +41,10 @@ function factory() {
     return new Floating(Math.pow(this.val(), exponent.val()));
   };
 
+  p.equals = function equals(x) {
+    return this.val() === x.val();
+  };
+
   p.toString = function toString() {
     return this.val().toString();
   };
