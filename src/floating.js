@@ -61,7 +61,7 @@ function factory() {
     return this.val() < x.val();
   };
 
-  p.gte = function gt(x) {
+  p.gte = function gte(x) {
     return this.gt(x) || this.equals(x);
   };
 
