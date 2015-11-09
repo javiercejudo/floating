@@ -37,12 +37,52 @@ function factory() {
     return new Floating(this.val() / x.val());
   };
 
+  p.mod = function mod(x) {
+    return new Floating(this.val() % x.val());
+  };
+
   p.pow = function pow(exponent) {
     return new Floating(Math.pow(this.val(), exponent.val()));
   };
 
+  p.sqrt = function sqrt() {
+    return new Floating(Math.sqrt(this.val()));
+  };
+
   p.equals = function equals(x) {
     return this.val() === x.val();
+  };
+
+  p.gt = function gt(x) {
+    return this.val() > x.val();
+  };
+
+  p.lt = function lt(x) {
+    return this.val() < x.val();
+  };
+
+  p.gte = function gt(x) {
+    return this.gt(x) || this.equals(x);
+  };
+
+  p.lte = function lte(x) {
+    return this.lt(x) || this.equals(x);
+  };
+
+  p.cmp = function cmp(x) {
+    if (this.gt(x)) {
+      return 1;
+    }
+
+    if (this.lt(x)) {
+      return -1;
+    }
+
+    return 0;
+  };
+
+  p.abs = function abs() {
+    return new Floating(Math.abs(this.val()));
   };
 
   p.toString = function toString() {
