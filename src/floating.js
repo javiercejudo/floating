@@ -5,6 +5,18 @@
 function floating(initial) {
   var val = Number(initial || 0);
 
+  function gt(x) {
+    return val > Number(x);
+  }
+
+  function lt(x) {
+    return val < Number(x);
+  }
+
+  function getVal() {
+    return val;
+  }
+
   return Object.freeze({
     plus: function plus(x) {
       return floating(val + x);
@@ -38,13 +50,8 @@ function floating(initial) {
       return val === Number(x);
     },
 
-    gt: function gt(x) {
-      return val > Number(x);
-    },
-
-    lt: function lt(x) {
-      return val < Number(x);
-    },
+    gt: gt,
+    lt: lt,
 
     gte: function gte(x) {
       return val >= Number(x);
@@ -55,11 +62,11 @@ function floating(initial) {
     },
 
     cmp: function cmp(x) {
-      if (this.gt(x)) {
+      if (gt(x)) {
         return 1;
       }
 
-      if (this.lt(x)) {
+      if (lt(x)) {
         return -1;
       }
 
@@ -74,13 +81,8 @@ function floating(initial) {
       return val.toString();
     },
 
-    valueOf: function valueOf() {
-      return val;
-    },
-
-    toJSON: function toJSON() {
-      return val;
-    },
+    valueOf: getVal,
+    toJSON: getVal,
   });
 }
 
