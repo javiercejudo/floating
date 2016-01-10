@@ -2,96 +2,100 @@
 
 'use strict';
 
-module.exports = factory;
+function floating(initial) {
+  var val = Number(initial || 0);
 
-function factory() {
-  function Floating(value) {
-    this.val = function val() {
-      return value;
-    };
+  return Object.freeze({
+    plus: function plus(x) {
+      return floating(val + x);
+    },
+
+    minus: function minus(x) {
+      return floating(val - x);
+    },
+
+    times: function times(x) {
+      return floating(val * x);
+    },
+
+    div: function div(x) {
+      return floating(val / x);
+    },
+
+    mod: function mod(x) {
+      return floating(val % x);
+    },
+
+    pow: function pow(exponent) {
+      return floating(Math.pow(val, Number(exponent)));
+    },
+
+    sqrt: function sqrt() {
+      return floating(Math.sqrt(val));
+    },
+
+    equals: function plus(x) {
+      return val === Number(x);
+    },
+
+    gt: function gt(x) {
+      return val > Number(x);
+    },
+
+    lt: function lt(x) {
+      return val < Number(x);
+    },
+
+    gte: function gte(x) {
+      return val >= Number(x);
+    },
+
+    lte: function lte(x) {
+      return val <= Number(x);
+    },
+
+    cmp: function cmp(x) {
+      if (this.gt(x)) {
+        return 1;
+      }
+
+      if (this.lt(x)) {
+        return -1;
+      }
+
+      return 0;
+    },
+
+    abs: function abs() {
+      return floating(Math.abs(val));
+    },
+
+    toString: function toString() {
+      return val.toString();
+    },
+
+    valueOf: function valueOf() {
+      return val;
+    },
+
+    toJSON: function toJSON() {
+      return val;
+    },
+  });
+}
+
+function Floating(initial) {
+  return floating(initial);
+}
+
+Floating.JSONReviver = function JSONReviver(key, value) {
+  if (key === '') {
+    return value;
   }
 
-  Floating.JSONReviver = function JSONReviver(key, value) {
-    if (key === '') {
-      return value;
-    }
+  return floating(value);
+};
 
-    return new Floating(value);
-  };
-
-  var p = Floating.prototype;
-
-  p.plus = function plus(x) {
-    return new Floating(this.val() + x.val());
-  };
-
-  p.minus = function minus(x) {
-    return new Floating(this.val() - x.val());
-  };
-
-  p.times = function times(x) {
-    return new Floating(this.val() * x.val());
-  };
-
-  p.div = function div(x) {
-    return new Floating(this.val() / x.val());
-  };
-
-  p.mod = function mod(x) {
-    return new Floating(this.val() % x.val());
-  };
-
-  p.pow = function pow(exponent) {
-    return new Floating(Math.pow(this.val(), exponent.val()));
-  };
-
-  p.sqrt = function sqrt() {
-    return new Floating(Math.sqrt(this.val()));
-  };
-
-  p.equals = function equals(x) {
-    return this.val() === x.val();
-  };
-
-  p.gt = function gt(x) {
-    return this.val() > x.val();
-  };
-
-  p.lt = function lt(x) {
-    return this.val() < x.val();
-  };
-
-  p.gte = function gte(x) {
-    return this.gt(x) || this.equals(x);
-  };
-
-  p.lte = function lte(x) {
-    return this.lt(x) || this.equals(x);
-  };
-
-  p.cmp = function cmp(x) {
-    if (this.gt(x)) {
-      return 1;
-    }
-
-    if (this.lt(x)) {
-      return -1;
-    }
-
-    return 0;
-  };
-
-  p.abs = function abs() {
-    return new Floating(Math.abs(this.val()));
-  };
-
-  p.toString = function toString() {
-    return this.val().toString();
-  };
-
-  p.valueOf = p.toJSON = function valueOf() {
-    return this.val();
-  };
-
+module.exports = function factory() {
   return Floating;
-}
+};
