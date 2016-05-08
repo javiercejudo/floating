@@ -97,11 +97,11 @@ describe('Floating', function() {
 
     it('should play nicely with JSON.stringify()', function() {
       var floatingThird = new Floating(1).div(new Floating(3));
-      var stringified = JSON.stringify([floatingThird]);
+      var stringified = JSON.stringify(floatingThird);
 
-      stringified.should.be.exactly('[0.3333333333333333]');
+      stringified.should.be.exactly('0.3333333333333333');
 
-      JSON.parse(stringified, Floating.JSONReviver)[0].should.eql(floatingThird);
+      JSON.parse(stringified, Floating.reviver).should.eql(floatingThird);
     });
   });
 });

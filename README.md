@@ -50,9 +50,9 @@ Number(floatingThird); // => 1/3
 ### JSON.stringify and JSON.parse with reviver
 
 ```js
-var stringified = JSON.stringify([floatingThird]); // => '[0.3333333333333333]'
+var stringified = JSON.stringify(floatingThird); // => '0.3333333333333333'
 
-JSON.parse(stringified, Floating.JSONReviver)[0]; // => new Floating(0.3333333333333333)
+JSON.parse(stringified, Floating.reviver); // => new Floating(0.3333333333333333)
 ```
 
 See [spec](test/spec.js).

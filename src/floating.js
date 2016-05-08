@@ -90,11 +90,7 @@ function Floating(initial) {
   return floating(initial);
 }
 
-Floating.JSONReviver = function JSONReviver(key, value) {
-  if (key === '') {
-    return value;
-  }
-
+Floating.reviver = function reviver(key, value) {
   return floating(value);
 };
 
